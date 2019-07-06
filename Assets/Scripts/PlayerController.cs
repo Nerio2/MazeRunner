@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody2D rb;
+	private Rigidbody rb;
 	private int i = 0;
 
 	public Camera camera;
 	// Start is called before the first frame update
 	void Start() {
-		rb = GetComponent<Rigidbody2D>();
+		rb = GetComponent<Rigidbody>();
 		rb.velocity = new Vector2(0 , 1);
 	}
 
