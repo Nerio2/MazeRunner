@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	public GameObject TurnLeft;
 	public GameObject TurnRight;
 	public GameObject Wall;
+	public GameObject TurnLR;
 
 	private List<Vector3> positions = new List<Vector3>();
 
@@ -15,7 +16,7 @@ public class GameController : MonoBehaviour {
 	public Vector3 nextPos;
 	private float sleep = 2f;
 	private float time = 0f;
-	public bool [] overlaps = { false , false , false };
+	public bool [] overlaps = { false , false , false, false };
 	public bool block;
 
 	// Start is called before the first frame update
@@ -42,10 +43,11 @@ public class GameController : MonoBehaviour {
 
 	//generating next part of maze
 	void next() {
-		int rand = Random.Range(0 , 3);
-		while ( overlaps [rand] )
-			rand = Random.Range(0 , 3);
-		for ( int i = 0 ; i < 3 ; i++ ) 
+		int rand;
+		do {
+			rand = Random.Range(0 , 4);
+		} while ( overlaps [rand] );
+				for ( int i = 0 ; i < 4 ; i++ ) 
 			overlaps [i] = false;
 
 		switch ( rand ) {
@@ -60,29 +62,35 @@ public class GameController : MonoBehaviour {
 				create(TurnLeft);
 				rotation++;
 				break;
+			case 3:
+				create(TurnLR);
+				block = true;
+				break;
 			default:
 				Debug.Log("Error");
 				break;
 		}
-		if ( rotation < 0 )
-			rotation = 3;
-		if ( rotation > 3 )
-			rotation = 0;
-		switch ( rotation ) {
-			case 0:
-				nextPos += new Vector3(0 , 2 , 0);
-				break;
-			case 1:
-				nextPos += new Vector3(-2 , 0 , 0);
-				break;
-			case 2:
-				nextPos += new Vector3(0 , -2 , 0);
-				break;
-			case 3:
-				nextPos += new Vector3(2 , 0 , 0);
-				break;
+		if ( !block ) {
+			if ( rotation < 0 )
+				rotation = 3;
+			if ( rotation > 3 )
+				rotation = 0;
+			switch ( rotation ) {
+				case 0:
+					nextPos += new Vector3(0 , 2 , 0);
+					break;
+				case 1:
+					nextPos += new Vector3(-2 , 0 , 0);
+					break;
+				case 2:
+					nextPos += new Vector3(0 , -2 , 0);
+					break;
+				case 3:
+					nextPos += new Vector3(2 , 0 , 0);
+					break;
+			}
+			check(rotation);
 		}
-		check(rotation);
 	}
 
 	void check(int rotation) {
@@ -94,6 +102,7 @@ public class GameController : MonoBehaviour {
 				r = 4;
 			overlaps [i + 1] = busy(r + i);
 		}
+		overlaps [3] = overlaps [0] || overlaps [2];
 	}
 	bool busy(int rotation) {
 		Vector3 colPos = nextPos;
@@ -123,5 +132,28 @@ public class GameController : MonoBehaviour {
 	void create(GameObject obj) {
 		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , null);
 		positions.Add(nextPos);
+	}
+	public void LRChange(int rot) {
+		rotation += rot;
+		if ( rotation < 0 )
+			rotation = 3;
+		if ( rotation > 3 )
+			rotation = 0;
+		switch ( rotation ) {
+			case 0:
+				nextPos += new Vector3(0 , 2 , 0);
+				break;
+			case 1:
+				nextPos += new Vector3(-2 , 0 , 0);
+				break;
+			case 2:
+				nextPos += new Vector3(0 , -2 , 0);
+				break;
+			case 3:
+				nextPos += new Vector3(2 , 0 , 0);
+				break;
+		}
+		check(rotation);
+		block = false;
 	}
 }
