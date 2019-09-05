@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private int i = 0;
 	public int acceleration = 80; //velocity.xy += deltaTime / acceleration               max acceleration=10, min acceleration=100
+	public int startSpeed=2;
 
 	public Camera camera;
 	// Start is called before the first frame update
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
-		rb.velocity = new Vector2(0 , 1);
+		rb.velocity = new Vector2(0 , 2);
 	}
 
 	// Update is called once per frame

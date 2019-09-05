@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 	public int rotation = 0;  //0-north 1-west 2-south 3-east
 	public Vector3 nextPos;
 	public float sleep = 1f;
-	private float time = 10f;
+	private float time = 30f;
 	public bool [] overlaps = { false , false , false , false };
 	public bool block;
 
@@ -25,8 +25,23 @@ public class GameController : MonoBehaviour {
 	void Start() {
 		Player = GameObject.Find("Player");
 		tr = Player.transform;
-		positions.Add(new Vector3(0 , 0 , 0));
-		nextPos = transform.position + new Vector3(0 , 2 , 0);
+		nextPos = transform.position;
+		positions.Add(nextPos);
+		switch ( rotation ) {
+			case 0:
+				nextPos += new Vector3(0 , 2 , 0);
+				break;
+			case 1:
+				nextPos += new Vector3(-2 , 0 , 0);
+				break;
+			case 2:
+				nextPos += new Vector3(0 , -2 , 0);
+				break;
+			case 3:
+				nextPos += new Vector3(2 , 0 , 0);
+				break;
+		}
+		positions.Add(nextPos);
 		next();
 		acceleration = Player.GetComponent<PlayerController>().acceleration;
 	}
@@ -171,6 +186,7 @@ public class GameController : MonoBehaviour {
 	private void restart() {
 		GameObject Obj=Instantiate(Stairs , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
 		Obj.GetComponent<StairsController>().sleep = sleep;
+		Obj.GetComponent<StairsController>().rotation = rotation;
 		Destroy(this);
 	}
 }
