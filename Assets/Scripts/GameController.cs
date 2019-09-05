@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
-	public GameObject Player;
+	private GameObject Player;
 	public GameObject TurnLeft;
 	public GameObject TurnRight;
 	public GameObject Wall;
 	public GameObject TurnLR;
+	public GameObject Stairs;
 
 	private List<Vector3> positions = new List<Vector3>();
-
+	private int acceleration;
 	private int numerOfElements = 3;
 	private Transform tr;
 	public int rotation = 0;  //0-north 1-west 2-south 3-east
@@ -22,14 +23,17 @@ public class GameController : MonoBehaviour {
 
 	// Start is called before the first frame update
 	void Start() {
+		Player = GameObject.Find("Player");
 		tr = Player.transform;
 		positions.Add(new Vector3(0 , 0 , 0));
 		nextPos = transform.position + new Vector3(0 , 2 , 0);
 		next();
+		acceleration = Player.GetComponent<PlayerController>().acceleration;
 	}
 
 	// Update is called once per frame
 	void Update() {
+		sleep -= Time.deltaTime / ( 5 * acceleration );
 		if ( rotation > 3 )
 			rotation = 0;
 		if ( rotation < 0 )
@@ -165,7 +169,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	private void restart() {
-		Debug.Log("restarting");
+		GameObject Obj=Instantiate(Stairs , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
+		Obj.GetComponent<StairsController>().sleep = sleep;
 		Destroy(this);
 	}
 }

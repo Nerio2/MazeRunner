@@ -295,6 +295,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 351489631}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: overlaps.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: overlaps.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: overlaps.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: overlaps.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
+      propertyPath: Stairs
+      value: 
+      objectReference: {fileID: 5777738264986638809, guid: dfdaeb726619b8044aad340cefa7d260,
+        type: 3}
     - target: {fileID: 6886670050341635355, guid: 44a63176c53c41144b4cee359335ff01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -348,26 +373,6 @@ PrefabInstance:
     - target: {fileID: 6886670050341635355, guid: 44a63176c53c41144b4cee359335ff01,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 351489631}
-    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
-      propertyPath: overlaps.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
-      propertyPath: overlaps.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
-      propertyPath: overlaps.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707519086, guid: 44a63176c53c41144b4cee359335ff01, type: 3}
-      propertyPath: overlaps.Array.data[3]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

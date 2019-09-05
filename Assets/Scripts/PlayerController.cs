@@ -6,9 +6,8 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private int i = 0;
-	private int acceleration = 80; //velocity.xy += deltaTime / acceleration               max acceleration=10, min acceleration=100
+	public int acceleration = 80; //velocity.xy += deltaTime / acceleration               max acceleration=10, min acceleration=100
 
-	public GameController gameController;
 	public Camera camera;
 	// Start is called before the first frame update
 	void Start() {
@@ -20,7 +19,6 @@ public class PlayerController : MonoBehaviour {
 	void Update() {
 		rb.velocity += new Vector2(rb.velocity.x > 0 ? Time.deltaTime / acceleration : rb.velocity.x < 0 ? Time.deltaTime / -acceleration : 0 ,
 			rb.velocity.y > 0 ? Time.deltaTime / acceleration : rb.velocity.y < 0 ? Time.deltaTime / -acceleration : 0);
-		gameController.sleep -= Time.deltaTime / ( 5 * acceleration );
 		if ( Input.GetKeyDown(KeyCode.LeftArrow) ) {
 			i++;
 			transform.eulerAngles = Vector3.forward * ( i * 90f );

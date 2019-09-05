@@ -103,15 +103,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e85897a5eb968d42b931adb74120461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   TurnLeft: {fileID: 1921508119803887782, guid: 38f306ded21d2a54e86ce5ceda0bbfdb,
     type: 3}
   TurnRight: {fileID: 5019411370112926202, guid: 0f0628e249b514748be704bcd0176746,
     type: 3}
   Wall: {fileID: 4649375741524958207, guid: 32bfd35da3fa0974a9e8c9641b139eee, type: 3}
   TurnLR: {fileID: 4174510444570503226, guid: 394c51d15b775224fa81940cfd9f1a2d, type: 3}
+  Stairs: {fileID: 5777738264986638809, guid: dfdaeb726619b8044aad340cefa7d260, type: 3}
   rotation: 0
   nextPos: {x: 0, y: 0, z: 0}
+  sleep: 1
   overlaps: 00000000
   block: 0
 --- !u!1001 &2240465455372738277
@@ -124,6 +125,11 @@ PrefabInstance:
     - target: {fileID: 4649375741524958207, guid: 32bfd35da3fa0974a9e8c9641b139eee,
         type: 3}
       propertyPath: m_Name
+      value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649375741524958207, guid: 32bfd35da3fa0974a9e8c9641b139eee,
+        type: 3}
+      propertyPath: m_TagString
       value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 4649375741524958206, guid: 32bfd35da3fa0974a9e8c9641b139eee,
