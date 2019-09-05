@@ -118,6 +118,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8872160449851109}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &351489632
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351489631}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999997
 --- !u!4 &351489637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8872160130211968, guid: 62706617b2f79e1408c4e8972109b06e,
@@ -170,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 118.2}
+  m_AnchoredPosition: {x: 8, y: 110.2}
   m_SizeDelta: {x: 2039.1, y: 345.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597381875
@@ -186,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -533,7 +549,8 @@ PrefabInstance:
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 597381875}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8872160130211975, guid: 62706617b2f79e1408c4e8972109b06e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 62706617b2f79e1408c4e8972109b06e, type: 3}
 --- !u!1001 &6886670048768420214
 PrefabInstance:

@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour {
 		}
 		score += Vector2.Distance(transform.position , lastPosition);
 		lastPosition = transform.position;
-		ScoreText.text = "Score: " + (int)score;
+		ScoreText.text = "Score: " + (long)score;
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if ( collision.name.Contains("Cube")){
+			Destroy(gameObject);
+		}
 	}
 }
