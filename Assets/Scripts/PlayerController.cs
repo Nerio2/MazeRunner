@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody rb;
+	private Rigidbody2D rb;
 	private int i = 0;
+	private int acceleration = 80; //velocity.xy += deltaTime / acceleration               max acceleration=10, min acceleration=100
 
+	public GameController gameController;
 	public Camera camera;
 	// Start is called before the first frame update
 	void Start() {
-		rb = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody2D>();
 		rb.velocity = new Vector2(0 , 1);
 	}
 
 	// Update is called once per frame
 	void Update() {
+		rb.velocity += new Vector2(rb.velocity.x > 0 ? Time.deltaTime / acceleration : rb.velocity.x < 0 ? Time.deltaTime / -acceleration : 0 ,
+			rb.velocity.y > 0 ? Time.deltaTime / acceleration : rb.velocity.y < 0 ? Time.deltaTime / -acceleration : 0);
+		gameController.sleep -= Time.deltaTime / ( 5 * acceleration );
 		if ( Input.GetKeyDown(KeyCode.LeftArrow) ) {
 			i++;
 			transform.eulerAngles = Vector3.forward * ( i * 90f );
@@ -35,5 +40,6 @@ public class PlayerController : MonoBehaviour {
 			else
 				rb.velocity = new Vector2(0 , rb.velocity.x * -1);
 		}
+		
 	}
 }

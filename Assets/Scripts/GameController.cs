@@ -11,11 +11,12 @@ public class GameController : MonoBehaviour {
 
 	private List<Vector3> positions = new List<Vector3>();
 
+	private int numerOfElements=3;
 	private Transform tr;
 	public int rotation = 0;  //0-north 1-west 2-south 3-east
 	public Vector3 nextPos;
-	private float sleep = 2f;
-	private float time = 0f;
+	public float sleep = 1f;
+	private float time = 10f;
 	public bool [] overlaps = { false , false , false, false };
 	public bool block;
 
@@ -37,7 +38,7 @@ public class GameController : MonoBehaviour {
 		if ( time > sleep ) {
 			if(!block)
 				next();
-			time = 0;
+			time-=sleep;
 		}
 	}
 
@@ -45,7 +46,7 @@ public class GameController : MonoBehaviour {
 	void next() {
 		int rand;
 		do {
-			rand = Random.Range(0 , 4);
+			rand = Random.Range(0 , numerOfElements);
 		} while ( overlaps [rand] );
 				for ( int i = 0 ; i < 4 ; i++ ) 
 			overlaps [i] = false;
@@ -130,7 +131,7 @@ public class GameController : MonoBehaviour {
 		return skip;
 	}
 	void create(GameObject obj) {
-		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , null);
+		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
 		positions.Add(nextPos);
 	}
 	public void LRChange(int rot) {
