@@ -11,13 +11,13 @@ public class GameController : MonoBehaviour {
 
 	private List<Vector3> positions = new List<Vector3>();
 
-	private int numerOfElements=3;
+	private int numerOfElements = 3;
 	private Transform tr;
 	public int rotation = 0;  //0-north 1-west 2-south 3-east
 	public Vector3 nextPos;
 	public float sleep = 1f;
 	private float time = 10f;
-	public bool [] overlaps = { false , false , false, false };
+	public bool [] overlaps = { false , false , false , false };
 	public bool block;
 
 	// Start is called before the first frame update
@@ -36,9 +36,9 @@ public class GameController : MonoBehaviour {
 			rotation = 3;
 		time += Time.deltaTime;
 		if ( time > sleep ) {
-			if(!block)
+			if ( !block )
 				next();
-			time-=sleep;
+			time -= sleep;
 		}
 	}
 
@@ -46,9 +46,11 @@ public class GameController : MonoBehaviour {
 	void next() {
 		int rand;
 		do {
+			if ( isBlocked() ) restart();
 			rand = Random.Range(0 , numerOfElements);
+			
 		} while ( overlaps [rand] );
-				for ( int i = 0 ; i < 4 ; i++ ) 
+		for ( int i = 0 ; i < 4 ; i++ )
 			overlaps [i] = false;
 
 		switch ( rand ) {
@@ -65,33 +67,30 @@ public class GameController : MonoBehaviour {
 				break;
 			case 3:
 				create(TurnLR);
-				block = true;
 				break;
 			default:
 				Debug.Log("Error");
 				break;
 		}
-		if ( !block ) {
-			if ( rotation < 0 )
-				rotation = 3;
-			if ( rotation > 3 )
-				rotation = 0;
-			switch ( rotation ) {
-				case 0:
-					nextPos += new Vector3(0 , 2 , 0);
-					break;
-				case 1:
-					nextPos += new Vector3(-2 , 0 , 0);
-					break;
-				case 2:
-					nextPos += new Vector3(0 , -2 , 0);
-					break;
-				case 3:
-					nextPos += new Vector3(2 , 0 , 0);
-					break;
-			}
-			check(rotation);
+		if ( rotation < 0 )
+			rotation = 3;
+		if ( rotation > 3 )
+			rotation = 0;
+		switch ( rotation ) {
+			case 0:
+				nextPos += new Vector3(0 , 2 , 0);
+				break;
+			case 1:
+				nextPos += new Vector3(-2 , 0 , 0);
+				break;
+			case 2:
+				nextPos += new Vector3(0 , -2 , 0);
+				break;
+			case 3:
+				nextPos += new Vector3(2 , 0 , 0);
+				break;
 		}
+		check(rotation);
 	}
 
 	void check(int rotation) {
@@ -155,6 +154,18 @@ public class GameController : MonoBehaviour {
 				break;
 		}
 		check(rotation);
-		block = false;
+	}
+
+	private bool isBlocked() {
+		for ( int i = 0 ; i < 4 ; i++ )
+			if ( overlaps [i] == false )
+				return false;
+		overlaps [1] = false;	//debug...
+		return true;
+	}
+
+	private void restart() {
+		Debug.Log("restarting");
+		Destroy(this);
 	}
 }
