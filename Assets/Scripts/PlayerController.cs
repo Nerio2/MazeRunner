@@ -14,14 +14,12 @@ public class PlayerController : MonoBehaviour {
 	public float startSpeed = 1.4f;
 
 	public Text ScoreText;
-	private float score = 0;
-	private Vector2 lastPosition;
+	private int score = 0;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		rb.velocity = new Vector2(0 , startSpeed);
 		speed = startSpeed;
-		lastPosition = transform.position;
 	}
 
 	void Update() {
@@ -55,14 +53,15 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		score += Vector2.Distance(transform.position , lastPosition);
-		lastPosition = transform.position;
-		ScoreText.text = "Score: " + (long) score;
+		ScoreText.text = "Score: " + score;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if ( collision.name.Contains("Cube") ) {
 			Destroy(gameObject);
+		} else if ( collision.GetComponent<RoadElement>().pkt ) {
+			score++;
+			collision.GetComponent<RoadElement>().pkt = false;
 		}
 	}
 }
