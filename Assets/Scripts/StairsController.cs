@@ -11,8 +11,8 @@ public class StairsController : MonoBehaviour {
 	public int rotation;
 
 	private void Start() {
-		StartObj = GameObject.FindGameObjectWithTag("Start");
-		StartPrefab = Resources.Load<GameObject>("Objects/Start");
+		StartObj = GameObject.FindGameObjectWithTag("GameController");
+		StartPrefab = Resources.Load<GameObject>("Objects/Game");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {

@@ -149,7 +149,8 @@ public class GameController : MonoBehaviour {
 		return skip;
 	}
 	void create(GameObject obj) {
-		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
+		GameObject Object=Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
+		Object.GetComponent<RoadElement>().direction = rotation;
 		positions.Add(nextPos);
 	}
 	public void LRChange(int rot) {
