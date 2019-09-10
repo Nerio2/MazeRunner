@@ -14,21 +14,17 @@ public class PlayerController : MonoBehaviour {
 	private float score = 0;
 	private Vector2 lastPosition;
 
-	public Camera camera;
-	// Start is called before the first frame update
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		rb.velocity = new Vector2(0 , 2);
 		lastPosition = transform.position;
 	}
 
-	// Update is called once per frame
 	void Update() {
 		rb.velocity += new Vector2(rb.velocity.x > 0 ? Time.deltaTime / acceleration : rb.velocity.x < 0 ? Time.deltaTime / -acceleration : 0 ,
 			rb.velocity.y > 0 ? Time.deltaTime / acceleration : rb.velocity.y < 0 ? Time.deltaTime / -acceleration : 0);
 		if ( Input.GetKeyDown(KeyCode.LeftArrow) ) {
 			i++;
-			transform.eulerAngles = Vector3.forward * ( i * 90f );
 
 
 			if ( rb.velocity.x == 0 )
@@ -37,7 +33,6 @@ public class PlayerController : MonoBehaviour {
 				rb.velocity = new Vector2(0 , rb.velocity.x);
 		} else if ( Input.GetKeyDown(KeyCode.RightArrow) ) {
 			i--;
-			transform.eulerAngles = Vector3.forward * ( i * 90f );
 
 
 			if ( rb.velocity.x == 0 )
