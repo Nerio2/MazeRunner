@@ -11,6 +11,9 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void LateUpdate() {
+		if ( Player != null )
 			transform.position = Player.transform.position + offset;
+		else
+			GetComponent<Camera>().orthographicSize += 0.05f;
 	}
 }
