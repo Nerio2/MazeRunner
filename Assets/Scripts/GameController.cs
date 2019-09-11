@@ -30,7 +30,6 @@ public class GameController : MonoBehaviour {
 	// Start is called before the first frame update
 	void Start() {
 		maxLength = Random.Range(MinimumRoadSize , MaximumRoadSize);
-		Debug.Log(maxLength);
 		Player = GameObject.Find("Player");
 		tr = Player.transform;
 		nextPos = transform.position;
@@ -200,6 +199,8 @@ public class GameController : MonoBehaviour {
 		GameObject Obj = Instantiate(Stairs , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
 		Obj.GetComponent<StairsController>().sleep = sleep;
 		Obj.GetComponent<StairsController>().rotation = rotation;
+		Obj.GetComponent<StairsController>().MinimumRoadSize = MinimumRoadSize;
+		Obj.GetComponent<StairsController>().MaximumRoadSize = MaximumRoadSize;
 		Destroy(this);
 	}
 }

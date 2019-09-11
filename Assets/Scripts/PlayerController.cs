@@ -14,12 +14,16 @@ public class PlayerController : MonoBehaviour {
 	public float startSpeed = 1.4f;
 
 	public Text ScoreText;
+	public Text FloorText;
 	private int score = 0;
+	public int floor = 0;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		rb.velocity = new Vector2(0 , startSpeed);
 		speed = startSpeed;
+		FloorText.text = "Floor: " + floor;
+		ScoreText.text = "Score: " + score;
 	}
 
 	void Update() {
@@ -52,15 +56,17 @@ public class PlayerController : MonoBehaviour {
 				direction = 3;
 			}
 		}
-
-		ScoreText.text = "Score: " + score;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if ( collision.name.Contains("Cube") ) {
 			Destroy(gameObject);
+		} else if ( collision.name.Contains("Stairs") ) {
+			floor++;
+			FloorText.text = "Floor: " + floor;
 		} else if ( collision.GetComponent<RoadElement>().pkt ) {
 			score++;
+			ScoreText.text = "Score: " + score;
 			collision.GetComponent<RoadElement>().pkt = false;
 		}
 	}
