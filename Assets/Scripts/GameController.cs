@@ -10,19 +10,27 @@ public class GameController : MonoBehaviour {
 	public GameObject TurnLR;
 	public GameObject Stairs;
 
+	private int length = 0;
+	private int maxLength;     //random betweeen 
+	public int MinimumRoadSize = 30;
+	public int MaximumRoadSize = 80;
+
 	private List<Vector3> positions = new List<Vector3>();
 	private int acceleration;
 	private int numerOfElements = 3;
 	private Transform tr;
+	[HideInInspector]
 	public int rotation = 0;  //0-north 1-west 2-south 3-east
-	public Vector3 nextPos;
+	private Vector3 nextPos;
 	public float sleep = 1f;
 	private float time = 30f;
-	public bool [] overlaps = { false , false , false , false };
-	public bool block;
+	private bool [] overlaps = { false , false , false , false };
+	private bool block;
 
 	// Start is called before the first frame update
 	void Start() {
+		maxLength = Random.Range(MinimumRoadSize , MaximumRoadSize);
+		Debug.Log(maxLength);
 		Player = GameObject.Find("Player");
 		tr = Player.transform;
 		nextPos = transform.position;
@@ -67,7 +75,7 @@ public class GameController : MonoBehaviour {
 		do {
 			if ( isBlocked() ) restart();
 			rand = Random.Range(0 , numerOfElements);
-			
+
 		} while ( overlaps [rand] );
 		for ( int i = 0 ; i < 4 ; i++ )
 			overlaps [i] = false;
@@ -149,6 +157,7 @@ public class GameController : MonoBehaviour {
 		return skip;
 	}
 	void create(GameObject obj) {
+		length++;
 		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
 		positions.Add(nextPos);
 	}
@@ -176,15 +185,19 @@ public class GameController : MonoBehaviour {
 	}
 
 	private bool isBlocked() {
-		for ( int i = 0 ; i < 4 ; i++ )
-			if ( overlaps [i] == false )
-				return false;
-		overlaps [1] = false;	//debug...
-		return true;
+		if ( length >= maxLength )
+			return true;
+		else {
+			for ( int i = 0 ; i < 4 ; i++ )
+				if ( overlaps [i] == false )
+					return false;
+			overlaps [1] = false;   //debug...
+			return true;
+		}
 	}
 
 	private void restart() {
-		GameObject Obj=Instantiate(Stairs , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
+		GameObject Obj = Instantiate(Stairs , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
 		Obj.GetComponent<StairsController>().sleep = sleep;
 		Obj.GetComponent<StairsController>().rotation = rotation;
 		Destroy(this);

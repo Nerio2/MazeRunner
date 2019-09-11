@@ -3,7 +3,16 @@ guid: 9e85897a5eb968d42b931adb74120461
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TurnLeft: {fileID: 1921508119803887782, guid: 38f306ded21d2a54e86ce5ceda0bbfdb,
+      type: 3}
+  - TurnRight: {fileID: 5019411370112926202, guid: 0f0628e249b514748be704bcd0176746,
+      type: 3}
+  - Wall: {fileID: 4649375741524958207, guid: 32bfd35da3fa0974a9e8c9641b139eee, type: 3}
+  - TurnLR: {fileID: 4174510444570503226, guid: 394c51d15b775224fa81940cfd9f1a2d,
+      type: 3}
+  - Stairs: {fileID: 5777738264986638809, guid: dfdaeb726619b8044aad340cefa7d260,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
