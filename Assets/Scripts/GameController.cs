@@ -74,10 +74,13 @@ public class GameController : MonoBehaviour {
 	void next() {
 		int rand;
 		do {
-			if ( isBlocked() ) restart();
+			if ( isBlocked() ) {
+				rand = 99;
+				break;
+			}
 			rand = Random.Range(0 , numerOfElements);
 
-		} while ( overlaps [rand] );
+		} while ( overlaps [rand]);
 		for ( int i = 0 ; i < 4 ; i++ )
 			overlaps [i] = false;
 
@@ -95,6 +98,9 @@ public class GameController : MonoBehaviour {
 				break;
 			case 3:
 				create(TurnLR);
+				break;
+			case 99:
+				restart();
 				break;
 			default:
 				Debug.Log("Error");
@@ -193,7 +199,6 @@ public class GameController : MonoBehaviour {
 			for ( int i = 0 ; i < 4 ; i++ )
 				if ( overlaps [i] == false )
 					return false;
-			overlaps [1] = false;   //debug...
 			return true;
 		}
 	}
