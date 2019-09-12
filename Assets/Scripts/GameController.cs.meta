@@ -13,6 +13,7 @@ MonoImporter:
       type: 3}
   - Stairs: {fileID: 5777738264986638809, guid: dfdaeb726619b8044aad340cefa7d260,
       type: 3}
+  - Floor: {fileID: 6285633682722297332, guid: bba4f177ad800e0488873b39466d2058, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

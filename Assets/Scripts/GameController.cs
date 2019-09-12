@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
 	public GameObject TurnLR;
 	public GameObject Stairs;
 
+	public GameObject Floor;
+
 	private int length = 0;
 	private int maxLength;     //random betweeen 
 	public int MinimumRoadSize = 30;
@@ -158,6 +160,7 @@ public class GameController : MonoBehaviour {
 	void create(GameObject obj) {
 		length++;
 		Instantiate(obj , nextPos , Quaternion.Euler(new Vector3(0 , 0 , rotation * 90)) , transform);
+		Instantiate(Floor , nextPos , Quaternion.Euler(new Vector3(0 , 0 , 0)) , transform);
 		positions.Add(nextPos);
 	}
 	public void LRChange(int rot) {
