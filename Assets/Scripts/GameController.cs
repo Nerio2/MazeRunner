@@ -27,10 +27,14 @@ public class GameController : MonoBehaviour {
 	public float sleep = 1f;
 	private float time = 30f;
 	private bool [] overlaps = { false , false , false , false };
-	private bool block;
+
+	public Color LvlColor;
 
 	// Start is called before the first frame update
 	void Start() {
+
+		LvlColor = Random.ColorHSV();
+
 		maxLength = Random.Range(MinimumRoadSize , MaximumRoadSize);
 		Player = GameObject.Find("Player");
 		tr = Player.transform;
@@ -64,8 +68,7 @@ public class GameController : MonoBehaviour {
 			rotation = 3;
 		time += Time.deltaTime;
 		if ( time > sleep ) {
-			if ( !block )
-				next();
+			next();
 			time -= sleep;
 		}
 	}

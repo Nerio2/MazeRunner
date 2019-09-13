@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 	private float speed;
 	private int direction = 0; //0-north 1-west 2-south 3-east
 
-	private int i = 0;
 	public int acceleration = 40; //velocity.xy += deltaTime / acceleration               max acceleration=10, min acceleration=100
 	public float startSpeed = 1.4f;
 
