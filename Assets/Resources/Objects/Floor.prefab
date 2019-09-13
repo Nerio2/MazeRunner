@@ -29,7 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
-  - {fileID: 6840009857046246776}
+  - {fileID: 4548358259724571667}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8e63523ff4767984c97efdd1e1f49ca1, type: 3}
-  m_Color: {r: 0.5943396, g: 0.24951048, b: 0.24951048, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9d252f5f967e1469390f1bafae7b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &529586609313778964
+--- !u!1001 &7397975149020064895
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -163,38 +163,18 @@ PrefabInstance:
     - target: {fileID: 6464319742807832684, guid: 10cd527db8fa92546b6137faec276c64,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6464319742807832684, guid: 10cd527db8fa92546b6137faec276c64,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6464319742807832685, guid: 10cd527db8fa92546b6137faec276c64,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6464319742807832685, guid: 10cd527db8fa92546b6137faec276c64,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6464319742807832685, guid: 10cd527db8fa92546b6137faec276c64,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6464319742807832685, guid: 10cd527db8fa92546b6137faec276c64,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10cd527db8fa92546b6137faec276c64, type: 3}
---- !u!4 &6840009857046246776 stripped
+--- !u!4 &4548358259724571667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6464319742807832684, guid: 10cd527db8fa92546b6137faec276c64,
     type: 3}
-  m_PrefabInstance: {fileID: 529586609313778964}
+  m_PrefabInstance: {fileID: 7397975149020064895}
   m_PrefabAsset: {fileID: 0}
