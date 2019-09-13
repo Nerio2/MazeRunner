@@ -28,12 +28,12 @@ public class GameController : MonoBehaviour {
 	private float time = 30f;
 	private bool [] overlaps = { false , false , false , false };
 
-	public Color LvlColor;
+	public Material LvlColor;
 
 	// Start is called before the first frame update
 	void Start() {
 
-		LvlColor = Random.ColorHSV();
+		LvlColor.color = Random.ColorHSV();
 
 		maxLength = Random.Range(MinimumRoadSize , MaximumRoadSize);
 		Player = GameObject.Find("Player");
